@@ -51,4 +51,10 @@ public class ReviewWebController {
         reviewController.updateReview(reviewId, rating, comment);
         return "redirect:/reviews";
     }
+
+    @GetMapping("/deleteReview")
+    public String deleteReview(@RequestParam int id) {
+        reviewController.deleteReview(id);
+        return "redirect:/reviews";
+    }
 }
