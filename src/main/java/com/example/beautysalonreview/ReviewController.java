@@ -115,4 +115,13 @@ public class ReviewController {
     public List<Review> getAllReviews() {
         return reviews;
     }
+
+    public Review getReviewById(int reviewId) {
+        for (Review review : reviews) {
+            if (review.getReviewId() == reviewId) {
+                return review;
+            }
+        }
+        return null;
+    }
 }

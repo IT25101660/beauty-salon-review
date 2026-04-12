@@ -72,6 +72,7 @@
             <th>Service Name</th>
             <th>Rating</th>
             <th>Comment</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -81,6 +82,9 @@
             <td th:text="${review.serviceName}"></td>
             <td th:text="${review.rating}"></td>
             <td th:text="${review.comment}"></td>
+            <td>
+                <a th:href="@{/editReview(id=${review.reviewId})}">Edit</a>
+            </td>
         </tr>
         </tbody>
     </table>

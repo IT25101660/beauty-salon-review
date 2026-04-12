@@ -34,4 +34,21 @@ public class ReviewWebController {
         model.addAttribute("reviews", reviewController.getAllReviews());
         return "review-list";
     }
+
+    @GetMapping("/editReview")
+    public String showEditPage(@RequestParam int id, Model model) {
+        Review review = reviewController.getReviewById(id);
+        model.addAttribute("review", review);
+        return "review-edit";
+    }
+
+    @PostMapping("/updateReview")
+    public String updateReview(
+            @RequestParam int reviewId,
+            @RequestParam int rating,
+            @RequestParam String comment
+    ) {
+        reviewController.updateReview(reviewId, rating, comment);
+        return "redirect:/reviews";
+    }
 }
