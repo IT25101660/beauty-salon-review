@@ -1,6 +1,7 @@
 package com.example.beautysalonreview;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,12 @@ public class ReviewWebController {
     ) {
         Review review = new Review(reviewId, customerName, serviceName, rating, comment);
         reviewController.addReview(review);
-
         return "redirect:/";
+    }
+
+    @GetMapping("/reviews")
+    public String showReviewsPage(Model model) {
+        model.addAttribute("reviews", reviewController.getAllReviews());
+        return "review-list";
     }
 }

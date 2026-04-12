@@ -111,4 +111,8 @@ public class ReviewController {
             System.out.println("Error rewriting file: " + e.getMessage());
         }
     }
+
+    public List<Review> getAllReviews() {
+        return reviews;
+    }
 }
