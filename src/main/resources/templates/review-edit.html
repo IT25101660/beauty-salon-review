@@ -2,28 +2,52 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Edit Review</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<header class="site-header" aria-label="Salon dashboard header">
+    <div class="inner">
+        <div>
+            <div class="topbar__title">Beauty Salon Reviews</div>
+            <div class="topbar__subtitle"></div>
+        </div>
+        <nav aria-label="Primary">
+            <a class="btn btn--secondary" href="/">Create</a>
+            <a class="btn btn--primary" href="/reviews">Reviews</a>
+        </nav>
+    </div>
+</header>
 
-<h2>Edit Review</h2>
+<main class="page-wrapper" aria-label="Edit review page">
+    <div class="container">
+        <h2 class="title">Edit Review</h2>
+        <p class="subtitle">Update the rating and comment while keeping the original customer and service details.</p>
 
-<form action="/updateReview" method="post">
+        <form action="/updateReview" method="post">
+            <input type="hidden" name="reviewId" th:value="${review.reviewId}">
 
-    <input type="hidden" name="reviewId" th:value="${review.reviewId}">
+            <div class="edit-summary" aria-label="Review details">
+                <p class="edit-summary__row">
+                    <span class="edit-summary__label">Customer</span>
+                    <span class="edit-summary__value" th:text="${review.customerName}"></span>
+                </p>
+                <p class="edit-summary__row">
+                    <span class="edit-summary__label">Service</span>
+                    <span class="edit-summary__value" th:text="${review.serviceName}"></span>
+                </p>
+            </div>
 
-    <p>Customer: <span th:text="${review.customerName}"></span></p>
-    <p>Service: <span th:text="${review.serviceName}"></span></p>
+            <label for="edit-rating">Rating</label>
+            <input id="edit-rating" type="number" name="rating" th:value="${review.rating}">
 
-    <label>Rating:</label>
-    <input type="number" name="rating" th:value="${review.rating}">
+            <label for="edit-comment">Comment</label>
+            <textarea id="edit-comment" name="comment" rows="4" th:text="${review.comment}"></textarea>
 
-    <label>Comment:</label>
-    <textarea name="comment" th:text="${review.comment}"></textarea>
+            <button class="submit-btn" type="submit">Update</button>
+        </form>
 
-    <button type="submit">Update</button>
-</form>
-
-<a href="/reviews">Back</a>
-
+        <a class="view-link" href="/reviews">Back</a>
+    </div>
+</main>
 </body>
 </html>

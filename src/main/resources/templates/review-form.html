@@ -2,89 +2,54 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Review Submission Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f0f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 500px;
-            margin: 50px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            text-align: center;
-            color: #c2185b;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 12px;
-            background-color: #c2185b;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #a3154c;
-        }
-    </style>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class="container">
-    <h2>Submit Your Review</h2>
+<header class="site-header" aria-label="Salon dashboard header">
+    <div class="inner">
+        <div>
+            <div class="topbar__title">Beauty Salon Reviews</div>
+            <div class="topbar__subtitle"></div>
+        </div>
+        <nav aria-label="Primary">
+            <a class="btn btn--secondary" href="/">Create</a>
+            <a class="btn btn--primary" href="/reviews">Reviews</a>
+        </nav>
+    </div>
+</header>
 
-    <form action="/submitReview" method="post">
-        <label>Review ID</label>
-        <input type="number" name="reviewId" required>
+<main class="page-wrapper" aria-label="Create review page">
+    <div class="container">
+        <h2 class="title">Create a Review</h2>
+        <p class="subtitle">Capture customer feedback with a clean, consistent format.</p>
 
-        <label>Customer Name</label>
-        <input type="text" name="customerName" required>
+        <form action="/submitReview" method="post">
+            <label>Review ID</label>
+            <input type="number" name="reviewId" required>
 
-        <label>Service Name</label>
-        <input type="text" name="serviceName" required>
+            <label>Customer Name</label>
+            <input type="text" name="customerName" required>
 
-        <label>Rating</label>
-        <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+            <label>Service Name</label>
+            <input type="text" name="serviceName" required>
 
-        <label>Comment</label>
-        <textarea name="comment" rows="4" required></textarea>
+            <label>Rating</label>
+            <select name="rating">
+                <option value="1">1 - Very Poor</option>
+                <option value="2">2 - Poor</option>
+                <option value="3">3 - Average</option>
+                <option value="4">4 - Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
 
-        <button type="submit">Submit Review</button>
-    </form>
+            <label>Comment</label>
+            <textarea name="comment" rows="4" required></textarea>
 
-    <a href="/reviews" style="display:block; text-align:center; margin-top:15px; color:#c2185b;">View All Reviews</a>
-</div>
+            <button class="submit-btn" type="submit">Submit Review</button>
+        </form>
+
+        <a class="view-link" href="/reviews">View All Reviews</a>
+    </div>
+</main>
 </body>
 </html>
